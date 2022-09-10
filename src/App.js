@@ -12,7 +12,6 @@ class App extends Component {
     };
   }
 
-
   componentDidMount() {
     window._dropbox = dropbox;
 
