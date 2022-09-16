@@ -9,7 +9,7 @@
   <meta name="theme-color" content="#000000" />
   <meta name="description" content="webЯcade" />
   <meta name="msapplication-TileColor" content="#ffffff">
-  <title>webЯcade</title>
+  <title>webЯcade Stand-alone</title>
   <script>
     const B64_PATTERN=new RegExp("^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$");var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",decode:function(a){var g,h,i,j,e,c,f,d="",b=0;for(a=a.replace(/[^A-Za-z0-9\+\/\=]/g,"");b<a.length;)j=this._keyStr.indexOf(a.charAt(b++)),e=this._keyStr.indexOf(a.charAt(b++)),c=this._keyStr.indexOf(a.charAt(b++)),f=this._keyStr.indexOf(a.charAt(b++)),g=j<<2|e>>4,h=(15&e)<<4|c>>2,i=(3&c)<<6|f,d+=String.fromCharCode(g),64!=c&&(d+=String.fromCharCode(h)),64!=f&&(d+=String.fromCharCode(i));return Base64._utf8_decode(d)},_utf8_decode:function(c){var b,d,f,e="",a=0;for(b=d=0;a<c.length;)(b=c.charCodeAt(a))<128?(e+=String.fromCharCode(b),a++):b>191&&b<224?(d=c.charCodeAt(a+1),e+=String.fromCharCode((31&b)<<6|63&d),a+=2):(d=c.charCodeAt(a+1),f=c.charCodeAt(a+2),e+=String.fromCharCode((15&b)<<12|(63&d)<<6|63&f),a+=3);return e}}
 
@@ -70,6 +70,13 @@
 
     window._appUrl = url;
     window._title = document.title;
+
+    let inIframe = true;
+    try {
+      inIframe = top.location.href != window.location.href;
+    } catch (e) {
+    }
+    window._inIframe = inIframe;
 
     if (propsObj && propsObj.icon) {
       const href = propsObj.icon;
